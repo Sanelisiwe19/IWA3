@@ -1,43 +1,21 @@
-import company from 'configuration'; 
-import year from 'configuration';
+// configuration.js
+export const company = 'ACME Inc.';
+export const year = 2022;
 
-const company = 'ACME Inc.';
-const year = 2022;
+// scripts.js
+import { company, year } from './configuration.js';
 
 const message = '© ' + company + ' (' + year + ')';
 document.querySelector('footer').innerText = message;
 
-// nwabisa.js
-
-const firstname = "Nwabisa";
-const surname = "Gabe";
-const role = "CEO";
-
-const display = `${firstname} ${surname} (${role})`;
-document.querySelector('#nwabisa').innerText = display;
-
-// johannes.js
-
-const firstname = "Johannes";
-const surname = "Potgieter";
-const role = "Intern";
-
-const display = `${firstname} ${surname} (${role})`;
-document.querySelector('#johannes').innerText = display;
-
-// alex.js
-
-const firstname = "Alex";
-const surname = "Naidoo";
-const role = "Head of Marketing";
-
-const display = `${firstname} ${surname} (${role})`;
-document.querySelector('#alex').innerText = display;
-
-// scripts.js
-
-import { role as nwabisaRole } from './nwabisa.js';
-import { role as johannesRole } from './johannes.js';
-import { role as alexRole } from './alex.js';
-
-console.log('Roles:', nwabisaRole, johannesRole, alexRole);
+import('./nwabisa.js').then((module) => {
+    const nwabisa = module.default;
+    import('./johannes.js').then((module) => {
+      const johannes = module.default;
+      import('./alex.js').then((module) => {
+        const alex = module.default;
+        console.log('Roles:', nwabisa.role, johannes.role, alex.role);
+      });
+    });
+  });
+  

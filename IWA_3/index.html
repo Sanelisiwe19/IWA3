@@ -7,13 +7,19 @@
     <script src="./scripts.js" defer></script>
 
     <script>
-        // Place the modified scripts.js code directly here
         const company = 'ACME Inc.';
         const year = 2022;
-  
         const message = '© ' + company + ' (' + year + ')';
-        document.querySelector('footer').innerText = message;
-      </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('footer').innerText = message;
+        });
+    </script>
+    <script type="module" src="./nwabisa.js"></script>
+    <script type="module" src="./johannes.js"></script>
+    <script type="module" src="./alex.js"></script>
+    <script nomodule src="./scripts.js"></script>
+
+ 
     </head>
   
     <body>
